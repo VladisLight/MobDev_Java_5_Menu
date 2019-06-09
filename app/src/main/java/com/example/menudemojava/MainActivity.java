@@ -27,7 +27,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.mymenu, menu);
+
+        menu.add(0, 1, 0, "add");
+        menu.add(0, 2, 0, "edit");
+        menu.add(0, 3, 3, "delete");
+        menu.add(0,7,7, "nothing");
+        menu.add(1, 4, 1, "copy");
+        menu.add(1, 5, 2, "paste");
+        menu.add(1, 6, 4, "exit");
+        menu.add(1, 8, 8, "super nothing");
+
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -46,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // TODO Auto-generated method stub
         StringBuilder sb = new StringBuilder();
+        if (item.getItemId()==6){
+            android.os.Process.killProcess(android.os.Process.myPid());
+        }
 
         // Выведем в TextView информацию о нажатом пункте меню
         sb.append("Item Menu");
@@ -56,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
         tv.setText(sb.toString());
 
         return super.onOptionsItemSelected(item);
+
+
     }
 
 }
